@@ -11,11 +11,12 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import { LinearGradient } from "expo-linear-gradient";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
 export default function App() {
+  console.log(Platform.OS);
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.safeAreaView}>
       <StatusBar style="auto" />
       <View style={styles.header}>
         <Image
@@ -86,7 +87,7 @@ export default function App() {
                 <Image
                   source={require("./assets/matthew.jpg")}
                   style={styles.cardImage}
-                  resizeMode="contain"
+                  resizeMode="cover"
                 />
                 <View style={styles.cardText}>
                   <Text
@@ -102,7 +103,7 @@ export default function App() {
                 <Image
                   source={require("./assets/anne.jpg")}
                   style={styles.cardImage}
-                  resizeMode="contain"
+                  resizeMode="cover"
                 />
                 <View style={styles.cardText}>
                   <Text
@@ -118,7 +119,7 @@ export default function App() {
                 <Image
                   source={require("./assets/jessica.jpg")}
                   style={styles.cardImage}
-                  resizeMode="contain"
+                  resizeMode="cover"
                 />
                 <View style={styles.cardText}>
                   <Text
@@ -134,7 +135,7 @@ export default function App() {
                 <Image
                   source={require("./assets/mackenzie.jpg")}
                   style={styles.cardImage}
-                  resizeMode="contain"
+                  resizeMode="cover"
                 />
                 <View style={styles.cardText}>
                   <Text
@@ -161,19 +162,23 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  safeAreaView: {
+    backgroundColor: "black",
+    flex: 1,
+    marginTop: Platform.OS === "android" ? Constants.statusBarHeight : 0,
+  },
   header: {
     backgroundColor: "#393939",
-    height: 85,
+    height: 68,
     color: "#fff",
     fontSize: 40,
     paddingLeft: 20,
   },
   logo: {
-    height: 80,
-    width: 80,
+    height: 70,
+    width: 70,
   },
   scrollview: {
-    marginTop: Platform.OS === "android" ? Constants.statusBarHeight : 0,
     backgroundColor: "#191919",
   },
   main: {
@@ -278,7 +283,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "#2A2A2A",
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "stretch",
     marginRight: 10,
   },
